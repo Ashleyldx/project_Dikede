@@ -36,7 +36,14 @@ module.exports = {
       warnings: false,
       errors: true
     },
-    before: require('./mock/mock-server.js')
+    proxy: {
+      '/api': {
+        target: 'http://likede2-admin.itheima.net/likede/', // 跨域请求地址
+        changeOrigin:true 
+      }
+    }
+
+    // before: require('./mock/mock-server.js') // 后端模拟数据请求
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
